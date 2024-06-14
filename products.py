@@ -92,7 +92,7 @@ def render_products_screen():
     with open('db/users.txt') as f:
         users = [json.loads(u.strip()) for u in f]
         for user in users:
-            if user['username'] == username and user['is_admin']:
+            if user['username'] == username and user.get('is_admin', False):
                 tk.Button(app,
                           text='Add product',
                           command=lambda: render_add_product_screen()
